@@ -46,3 +46,7 @@ sequence
 ## DNA Nucleatide Count
 st.header('OUTPUT (DNA Nucleotide Count)')
 
+# To Count the Characters in DNA Sequence use Dictionary Function 
+# Empty Dictionary
+st.subheader('1. Print Dictionary')
+
