@@ -4,8 +4,10 @@ import numpy as np
 import altair as alt
 from PIL import Image
 
+# Adding the Logo Image
 image = Image.open("logo-dna.jpg")
 
+# Setting the image as the container width
 st.image(image,use_container_width =True) 
 
 st.write("#DNA Nucleotide Count Web App")
@@ -25,14 +27,16 @@ sequence_input = ">DNA Query 2 \n GADADADCCCCCCSFFFFFFEERDDVDDDDDFFDFVFVFFEREREF
 # Input Box or Text Box
 
 sequence = st.text_area("Sequence input",sequence_input, height=200)
-
+# Split the entire DNA sequence in multi-lines
 sequence = sequence.splitlines()
 
+# Not counting the first line and count from the second line
 sequence = sequence[1:] 
 sequence
+# Join the complete DNA sequence
 sequence = "".join(sequence)
 
-st.write("### ***" )
+st.write("### ***" ) # Horizonal Line
 
 # INPUT PRINT
 
