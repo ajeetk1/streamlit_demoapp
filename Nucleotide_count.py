@@ -22,7 +22,7 @@ st.header("Enter DNA sequence")
 #st.text_input()
 
 # DNA Input
-sequence_input = ">DNA Query 2 \n GADADADCCCCCCSFFFFFFEERDDVDDDDDFFDFVFVFFEREREFREFREFREFRTHYJHNFCSDCDSCDFFBGBDCSCFVDFCD"
+sequence_input = ">DNA Query 2\nGAACACGTGGAGGCAAACAGGAAGGTGAAGAAGAACTTATCCTATCAGGACGGAAGGTCCTGTGCTCGGG\nATCTTCCAGACGTCGCGACTCTAAATTGCCCCCTCTGAGGTCAAGGAACACAAGATGGTTTTGGAAATGC\nTGAACCCGATACATTATAACATCACCAGCATCGTGCCTGAAGCCATGCCTGCTGCCACCATGCCAGTCCT"
 
 # Input Box or Text Box
 
@@ -33,10 +33,10 @@ sequence = sequence.splitlines()
 # Not counting the first line and count from the second line
 sequence = sequence[1:] 
 sequence
-# Join the complete DNA sequence
-sequence = "".join(sequence)
+# Concatenates the complete DNA sequence
+sequence = "".join(sequence) 
 
-st.write("### ***" ) # Horizonal Line
+st.markdown("---") #Horizonal Line
 
 # INPUT PRINT
 
@@ -49,4 +49,25 @@ st.header('OUTPUT (DNA Nucleotide Count)')
 # To Count the Characters in DNA Sequence use Dictionary Function 
 # Empty Dictionary
 st.subheader('1. Print Dictionary')
+# Dictionary Python
+def DNA_nucleotide_count(seq):
+  d = dict([
+            ('A',seq.count('A')),
+            ('T',seq.count('T')),
+            ('G',seq.count('G')),
+            ('C',seq.count('C'))
+            ])
+  return d
 
+X = DNA_nucleotide_count(sequence)
+X
+
+st.markdown("---") # Horizontal Line
+
+### 3. Display DataFrame
+st.subheader('2. Display DataFrame')
+df = pd.DataFrame.from_dict(X, orient='index')
+df = df.rename({0: 'count'}, axis='columns')
+df.reset_index(inplace=True)
+df = df.rename(columns = {'index':'nucleotide'})
+st.write(df)
